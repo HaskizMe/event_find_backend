@@ -1,7 +1,17 @@
 # Install dependencies with Conda
 
-```conda env create -f environment.yml```
+```bash
+conda env create -f environment.yml
+```
 
 # Export dependencies with Conda
 
-```conda env export > environment.yml```
+```bash
+conda env export > environment.yml
+```
+
+# Run server locally 
+
+```bash
+uvicorn main:app --reload
+```
