@@ -7,7 +7,7 @@ from services.login_service import LoginService
 router = APIRouter(prefix="/api/signup", tags=["Authentication"])
 
 @router.post("/", response_model=LoginResponse)
-async def login(login: LoginRequest):
+async def signup(login: LoginRequest):
     try:
         token = LoginService.signup_user(login.username, login.password)
         return LoginResponse(success=True, jwt_token=token)

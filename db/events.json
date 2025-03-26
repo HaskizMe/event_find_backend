@@ -1,0 +1,29 @@
+[
+    {
+      "id": 1,
+      "title": "Tech Conference 2025",
+      "address": "123 Innovation Dr, Silicon Valley, CA",
+      "start_date": "2025-04-10",
+      "end_date": "2025-04-12",
+      "type": "Conference",
+      "description": "A three-day conference focusing on emerging tech trends and innovations."
+    },
+    {
+      "id": 2,
+      "title": "Startup Pitch Night",
+      "address": "456 Venture Blvd, Austin, TX",
+      "start_date": "2025-05-05",
+      "end_date": "2025-05-05",
+      "type": "Networking",
+      "description": "An evening event where startups pitch their ideas to investors and community leaders."
+    },
+    {
+      "id": 3,
+      "title": "AI in Healthcare Summit",
+      "address": "789 Medical Park, Boston, MA",
+      "start_date": "2025-06-15",
+      "end_date": "2025-06-16",
+      "type": "Summit",
+      "description": "Exploring how artificial intelligence is transforming the healthcare industry."
+    }
+  ]
