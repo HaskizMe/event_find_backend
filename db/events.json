@@ -1,29 +1,72 @@
 [
     {
-      "id": 1,
-      "title": "Tech Conference 2025",
-      "address": "123 Innovation Dr, Silicon Valley, CA",
-      "start_date": "2025-04-10",
-      "end_date": "2025-04-12",
-      "type": "Conference",
-      "description": "A three-day conference focusing on emerging tech trends and innovations."
+        "title": "Test event",
+        "address": "A cool address",
+        "start_date": "2025-06-15",
+        "end_date": "2025-07-15",
+        "type": "test",
+        "description": "Here's a test",
+        "id": 3777,
+        "user_id": 904218
     },
     {
-      "id": 2,
-      "title": "Startup Pitch Night",
-      "address": "456 Venture Blvd, Austin, TX",
-      "start_date": "2025-05-05",
-      "end_date": "2025-05-05",
-      "type": "Networking",
-      "description": "An evening event where startups pitch their ideas to investors and community leaders."
+        "title": "Test event",
+        "address": "A cool address",
+        "start_date": "2025-06-15",
+        "end_date": "2025-07-15",
+        "type": "test",
+        "description": "Here's a test",
+        "id": 3329,
+        "user_id": 904218
     },
     {
-      "id": 3,
-      "title": "AI in Healthcare Summit",
-      "address": "789 Medical Park, Boston, MA",
-      "start_date": "2025-06-15",
-      "end_date": "2025-06-16",
-      "type": "Summit",
-      "description": "Exploring how artificial intelligence is transforming the healthcare industry."
+        "title": "Test event",
+        "address": "A cool address",
+        "start_date": "2025-06-15",
+        "end_date": "2025-07-15",
+        "type": "test",
+        "description": "Here's a test",
+        "id": 6056,
+        "user_id": 904218
+    },
+    {
+        "title": "Test event",
+        "address": "A cool address",
+        "start_date": "2025-06-15",
+        "end_date": "2025-07-15",
+        "type": "test",
+        "description": "Here's a test",
+        "id": 3118,
+        "user_id": 904218
+    },
+    {
+        "title": "Test event",
+        "address": "A cool address",
+        "start_date": "2025-06-15",
+        "end_date": "2025-07-15",
+        "type": "test",
+        "description": "Here's a test",
+        "id": 5566,
+        "user_id": 904218
+    },
+    {
+        "title": "Test event",
+        "address": "A cool address",
+        "start_date": "2025-06-15",
+        "end_date": "2025-07-15",
+        "type": "test",
+        "description": "Here's a test",
+        "id": 9159,
+        "user_id": 904218
+    },
+    {
+        "title": "Test event",
+        "address": "A cool address",
+        "start_date": "2025-06-15",
+        "end_date": "2025-07-15",
+        "type": "test",
+        "description": "Here's a test",
+        "id": 5601,
+        "user_id": 571293
     }
-  ]
+]

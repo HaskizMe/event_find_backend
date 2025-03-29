@@ -1,13 +1,15 @@
 import hashlib
+from dotenv import load_dotenv
+import os
 import jwt
 import datetime
 from repositories.user_repository import UserRepository
 from models.user_model import User
 
-# Secret key for signing JWT (store securely in environment variables)
-# We want this secret and not in the code, we'll remove it later using .env
-SECRET_KEY = "your_secret_key_your_secret_key_your_secret_key_your_secret_key_your_secret_key_"
-ALGORITHM = "HS256"
+load_dotenv()
+
+SECRET_KEY = os.getenv("SECRET_KEY")
+ALGORITHM = os.getenv("ALGORITHM", "HS256")
 
 class LoginService:
     # Function to verify a jwt token
@@ -39,6 +41,7 @@ class LoginService:
                 raise Exception("Invalid credentials")
             
             user_payload = {
+                "id": user.id,
                 "username": user.username,
                 "name": user.name
             }

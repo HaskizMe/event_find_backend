@@ -12,7 +12,12 @@ class UserRepository:
                 data = json.load(file)
                 for user in data["users"]:
                     if user["username"] == username:
-                        return User(user["username"], user["name"], user["password_hash"])  # Returns the User object
+                        return User(
+                            username=user["username"],
+                            name=user["name"],
+                            password_hash=user["password_hash"],
+                            id=user.get("id")  # ✅ this ensures you load the saved ID
+                        )
         except FileNotFoundError:
             raise Exception("User file not found")
         return None
@@ -24,7 +29,7 @@ class UserRepository:
                 data = json.load(file)
                 data["users"].append(user.__dict__)
             with open("./db/users.json", "w") as file:
-                json.dump(data, file)
+                json.dump(data, file, indent=4)
 
             return user
         except FileNotFoundError:

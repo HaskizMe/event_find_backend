@@ -1,25 +1,49 @@
+import random
 import httpx
 import json
+import uuid
 
-from schemas.event_schema import Event, EventResponse
+
+from schemas.event_schema import Event, EventsResponse, EventRequest
 
 
-class SWAPIRepository:
-    # @staticmethod
-    # async def get_all_films() -> FilmResponse | None:
-    #     url = "https://swapi.dev/api/films/"
-    #     async with httpx.AsyncClient() as client:
-    #         response = await client.get(url)
-    #         if response.status_code == 200:
-    #             return FilmResponse(**response.json())
-    #     return None
-    
+class EventRepository:
+
     @staticmethod
-    def get_all_events() -> EventResponse | None:
+    def get_all_events() -> EventsResponse | None:
         try:
             with open("./db/events.json", "r") as file:
                 data = json.load(file)  # this should be a list of event dicts
                 events = [Event(**event) for event in data]
-                return EventResponse(count=len(events), results=events)
+                return EventsResponse(count=len(events), results=events)
         except FileNotFoundError:
             raise Exception("Events file not found")
+        
+    @staticmethod
+    def create_event(event: EventRequest, user_id: int) -> Event | None:
+        try:
+            with open("./db/events.json", "r") as file:
+                data = json.load(file)
+
+            # Generate a random numeric ID that isn't already used
+            existing_ids = {e.get("id") for e in data if "id" in e}
+            new_id = random.randint(1000, 9999)
+            while new_id in existing_ids:
+                new_id = random.randint(1000, 9999)
+
+            # Create new Event with an ID and user_id
+            event_data = event.dict()
+            event_data["id"] = new_id
+            event_data["user_id"] = user_id
+
+            data.append(event_data)
+
+            with open("./db/events.json", "w") as file:
+                json.dump(data, file, indent=4)
+
+            return Event(**event_data)
+
+        except FileNotFoundError:
+            raise Exception("Events file not found")
+        except Exception as e:
+            raise e

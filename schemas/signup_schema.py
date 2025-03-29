@@ -1,5 +1,5 @@
 from pydantic import BaseModel
 
 class SignUpRequest(BaseModel):
-    username: str
-    password: str
+    success: bool
+    message: str
