@@ -26,10 +26,11 @@ class LoginService:
         
     # Function to verify login from users.json
     @staticmethod
-    def get_login_token(username: str, password: str) -> str:
+    def get_login_token(email: str, password: str) -> str:
         try:
+            email = email.strip().lower()
             # Fetch user from database
-            user = UserRepository.get_user_by_username(username)
+            user = UserRepository.get_user_by_email(email)
             if not user:
                 raise Exception("User not found")
 
@@ -43,7 +44,7 @@ class LoginService:
             user_payload = {
                 "id": user.id,
                 "username": user.username,
-                "name": user.name
+                "email": user.email
             }
 
             # Generate JWT token
@@ -61,23 +62,27 @@ class LoginService:
         
 
     @staticmethod
-    def signup_user(username: str, password: str) -> str:
+    def signup_user(email: str, password: str, username: str) -> str:
         try:
+            # Normalize inputs
+            email = email.strip().lower()
+            username = username.strip()
+
             # Check if the user already exists
-            if UserRepository.get_user_by_username(username):
+            if UserRepository.get_user_by_email(email):
                 raise Exception("Username already exists")
 
             # Hash the password before saving it
             hashed_password = hashlib.sha256(password.encode()).hexdigest()
 
             # You can use the username for name or ask for a name separately
-            new_user = User(username=username, name=username, password_hash=hashed_password)
+            new_user = User(username=username, email=email, password_hash=hashed_password)
 
             # Save the user using the repository
             UserRepository.create_user(new_user)
 
             # Return JWT token just like login
-            return LoginService.get_login_token(username, password)
+            return LoginService.get_login_token(email, password)
 
         except Exception as e:
             raise Exception(f"Signup failed: {str(e)}")

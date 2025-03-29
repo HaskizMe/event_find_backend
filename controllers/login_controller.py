@@ -9,7 +9,7 @@ router = APIRouter(prefix="/api/login", tags=["Authentication"])
 @router.post("/", response_model=LoginResponse)
 async def login(login: LoginRequest):
     try:
-        token = LoginService.get_login_token(login.username, login.password)
+        token = LoginService.get_login_token(login.email, login.password)
         return LoginResponse(success=True, jwt_token=token)
     except Exception as e:
         raise HTTPException(status_code=401, detail=str(e))

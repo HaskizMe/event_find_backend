@@ -6,17 +6,17 @@ from models.user_model import User
 
 class UserRepository:
     @staticmethod
-    def get_user_by_username(username: str) -> User:
+    def get_user_by_email(email: str) -> User:
         try:
             with open("./db/users.json", "r") as file:
                 data = json.load(file)
                 for user in data["users"]:
-                    if user["username"] == username:
+                    if user["email"] == email:
                         return User(
                             username=user["username"],
-                            name=user["name"],
+                            email=user["email"],
                             password_hash=user["password_hash"],
-                            id=user.get("id")  # ✅ this ensures you load the saved ID
+                            id=user.get("id")
                         )
         except FileNotFoundError:
             raise Exception("User file not found")

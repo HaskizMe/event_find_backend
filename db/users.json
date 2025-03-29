@@ -1,15 +1,21 @@
 {
     "users": [
         {
-            "id": 904218,
-            "username": "test1",
-            "name": "test1",
+            "id": 920574,
+            "email": "dev@local.com",
+            "username": "haskellb",
             "password_hash": "89e01536ac207279409d4de1e5253e01f4a1769e696db0d6062ca9b8f56767c8"
         },
         {
-            "id": 571293,
-            "username": "test2",
-            "name": "test2",
+            "id": 164222,
+            "email": "haskellb2017@gmail.com",
+            "username": "HaskizMe",
+            "password_hash": "da809383704b96505bc00d06f65335bb1790f9092ad98b0ae41f96525aa742cb"
+        },
+        {
+            "id": 554511,
+            "email": "dev7@local.com",
+            "username": "haskellb",
             "password_hash": "89e01536ac207279409d4de1e5253e01f4a1769e696db0d6062ca9b8f56767c8"
         }
     ]

@@ -16,7 +16,6 @@ def get_current_user_id(request: Request) -> int:
     token = auth_header.split(" ")[1]
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        print(payload)
         return payload["user"]["id"]
     except JWTError:
         raise HTTPException(status_code=401, detail="Invalid token")

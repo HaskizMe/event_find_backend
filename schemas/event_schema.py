@@ -10,6 +10,7 @@ class Event(BaseModel):
     end_date: str
     type: str
     description: str
+    attendees: List[int]
 
 class EventsResponse(BaseModel):
     # count: int
@@ -18,6 +19,7 @@ class EventsResponse(BaseModel):
     results: List[Event]
 
 
+# What the frontend sends
 class EventRequest(BaseModel):
     title: str
     address: str
@@ -25,3 +27,6 @@ class EventRequest(BaseModel):
     end_date: str
     type: str
     description: str
+
+class AttendanceRequest(BaseModel):
+    attending: bool

@@ -6,8 +6,9 @@
         "end_date": "2025-07-15",
         "type": "test",
         "description": "Here's a test",
-        "id": 3777,
-        "user_id": 904218
+        "id": 8194,
+        "user_id": 571293,
+        "attendees": []
     },
     {
         "title": "Test event",
@@ -16,8 +17,9 @@
         "end_date": "2025-07-15",
         "type": "test",
         "description": "Here's a test",
-        "id": 3329,
-        "user_id": 904218
+        "id": 3910,
+        "user_id": 571293,
+        "attendees": []
     },
     {
         "title": "Test event",
@@ -26,8 +28,9 @@
         "end_date": "2025-07-15",
         "type": "test",
         "description": "Here's a test",
-        "id": 6056,
-        "user_id": 904218
+        "id": 9898,
+        "user_id": 571293,
+        "attendees": []
     },
     {
         "title": "Test event",
@@ -36,37 +39,8 @@
         "end_date": "2025-07-15",
         "type": "test",
         "description": "Here's a test",
-        "id": 3118,
-        "user_id": 904218
-    },
-    {
-        "title": "Test event",
-        "address": "A cool address",
-        "start_date": "2025-06-15",
-        "end_date": "2025-07-15",
-        "type": "test",
-        "description": "Here's a test",
-        "id": 5566,
-        "user_id": 904218
-    },
-    {
-        "title": "Test event",
-        "address": "A cool address",
-        "start_date": "2025-06-15",
-        "end_date": "2025-07-15",
-        "type": "test",
-        "description": "Here's a test",
-        "id": 9159,
-        "user_id": 904218
-    },
-    {
-        "title": "Test event",
-        "address": "A cool address",
-        "start_date": "2025-06-15",
-        "end_date": "2025-07-15",
-        "type": "test",
-        "description": "Here's a test",
-        "id": 5601,
-        "user_id": 571293
+        "id": 2960,
+        "user_id": 571293,
+        "attendees": []
     }
 ]

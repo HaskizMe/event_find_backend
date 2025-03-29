@@ -35,6 +35,7 @@ class EventRepository:
             event_data = event.dict()
             event_data["id"] = new_id
             event_data["user_id"] = user_id
+            event_data["attendees"] = []
 
             data.append(event_data)
 
@@ -42,6 +43,37 @@ class EventRepository:
                 json.dump(data, file, indent=4)
 
             return Event(**event_data)
+
+        except FileNotFoundError:
+            raise Exception("Events file not found")
+        except Exception as e:
+            raise e
+        
+    @staticmethod
+    def setAttending(event_id: int, user_id: int, attending: bool) -> Event | None:
+        try:
+            with open("./db/events.json", "r") as file:
+                data = json.load(file)
+
+            for event in data:
+                if event.get("id") == event_id:
+                    # Ensure "attendees" field exists
+                    event["attendees"] = event.get("attendees", [])
+
+                    if attending:
+                        if user_id not in event["attendees"]:
+                            event["attendees"].append(user_id)
+                    else:
+                        if user_id in event["attendees"]:
+                            event["attendees"].remove(user_id)
+
+                    # Save the updated data
+                    with open("./db/events.json", "w") as file:
+                        json.dump(data, file, indent=4)
+
+                    return Event(**event)
+
+            return None  # Event not found
 
         except FileNotFoundError:
             raise Exception("Events file not found")
