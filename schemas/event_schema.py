@@ -6,8 +6,11 @@ class Event(BaseModel):
     user_id: int
     title: str
     address: str
+    city: str
+    state: str
+    zip: str
+    country: str
     start_date: str
-    end_date: str
     type: str
     description: str
     attendees: List[int]
@@ -23,10 +26,14 @@ class EventsResponse(BaseModel):
 class EventRequest(BaseModel):
     title: str
     address: str
+    city: str
+    state: str
+    zip: str
+    country: str
     start_date: str
-    end_date: str
     type: str
     description: str
+
 
 class AttendanceRequest(BaseModel):
     attending: bool

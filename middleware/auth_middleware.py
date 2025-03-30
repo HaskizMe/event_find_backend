@@ -11,7 +11,7 @@ class AuthMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next):
 
         # This just adds a list of endpoints that don't require authentication
-        public_paths = ["/api/login", "/docs", "/redoc", "/openapi.json", "/health", "/api/signup"]
+        public_paths = ["/api/login", "/docs", "/redoc", "/openapi.json", "/health", "/api/signup", "/api/keys/weather"]
         if any(request.url.path.startswith(path) for path in public_paths):
             return await call_next(request)
 

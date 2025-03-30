@@ -96,3 +96,19 @@ class EventRepository:
             raise Exception("Events file not found")
         except Exception as e:
             raise e
+        
+
+    @staticmethod
+    def delete_event(event_id: int):
+        try:
+            with open("./db/events.json", "r") as file:
+                events = json.load(file)
+
+            filtered = [event for event in events if event["id"] != event_id]
+
+            with open("./db/events.json", "w") as file:
+                json.dump(filtered, file, indent=4)
+        except FileNotFoundError:
+            raise Exception("Events file not found")
+        except Exception as e:
+            raise e

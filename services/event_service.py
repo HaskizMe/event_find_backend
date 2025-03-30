@@ -40,3 +40,8 @@ class EventService:
             raise HTTPException(status_code=500, detail="Events database file not found.")
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"Unexpected error: {str(e)}")
+        
+
+    @staticmethod
+    async def delete_event(event_id: int):
+        return EventRepository.EventRepository.delete_event(event_id)

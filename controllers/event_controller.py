@@ -12,7 +12,7 @@ async def get_events():
     return await EventService.get_all_events()
 
 @router.post("/event", response_model=Event)
-async def create_event(event: EventRequest,user_id: int = Depends(get_current_user_id)):
+async def create_event(event: EventRequest, user_id: int = Depends(get_current_user_id)):
     return await EventService.create_event(event, user_id)
 
 
@@ -32,5 +32,19 @@ async def get_event(event_id: int):
         if not event:
             raise HTTPException(status_code=404, detail="Event not found")
         return event
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    
+
+@router.delete("/event/{event_id}")
+async def delete_event(event_id: int, user_id: int = Depends(get_current_user_id)):
+    try:
+        event = await EventService.get_event_by_id(event_id)
+        if not event:
+            raise HTTPException(status_code=404, detail="Event not found")
+        if event.user_id != user_id:
+            raise HTTPException(status_code=403, detail="You do not have permission to delete this event")
+        await EventService.delete_event(event_id)
+        return {"message": "Event deleted"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
