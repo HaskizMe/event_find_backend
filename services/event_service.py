@@ -10,6 +10,15 @@ class EventService:
         return EventRepository.EventRepository.get_all_events()
     
     @staticmethod
+    async def get_event_by_id(event_id: int) -> Event | None:
+        try:
+            return EventRepository.EventRepository.get_event_by_id(event_id)
+        except FileNotFoundError:
+            raise HTTPException(status_code=500, detail="Events database file not found.")
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Unexpected error: {str(e)}")
+    
+    @staticmethod
     async def create_event(event, user_id: int) -> Event:
         try:
             # Pass both event and user_id to the repo layer

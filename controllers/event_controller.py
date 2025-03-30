@@ -1,8 +1,8 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 
 from schemas.event_schema import EventsResponse, Event, EventRequest, AttendanceRequest
 from services.event_service import EventService
-from utils.auth_utility import get_current_user_id  # or wherever your function is
+from utils.auth_utility import get_current_user_id 
 
 
 router = APIRouter(prefix="/api", tags=["Authorization"])
@@ -23,3 +23,14 @@ async def set_attendance(
     user_id: int = Depends(get_current_user_id)
 ):
     return await EventService.set_attendance(event_id, user_id, data.attending)
+
+# New endpoint to get a single event by ID
+@router.get("/event/{event_id}", response_model=Event)
+async def get_event(event_id: int):
+    try:
+        event = await EventService.get_event_by_id(event_id)
+        if not event:
+            raise HTTPException(status_code=404, detail="Event not found")
+        return event
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

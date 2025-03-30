@@ -1,46 +1,65 @@
 [
     {
-        "title": "Test event",
-        "address": "A cool address",
-        "start_date": "2025-06-15",
-        "end_date": "2025-07-15",
-        "type": "test",
-        "description": "Here's a test",
-        "id": 8194,
-        "user_id": 571293,
+        "title": "Community Cleanup",
+        "address": "123 Main St, Hometown",
+        "start_date": "2025-05-10",
+        "end_date": "2025-05-10",
+        "type": "Volunteer",
+        "description": "Join us to clean up the local park and surrounding areas.",
+        "id": 1010,
+        "user_id": 888888,
+        "attendees": [
+            164222
+        ]
+    },
+    {
+        "title": "Tech Networking Night",
+        "address": "456 Innovation Blvd, Tech City",
+        "start_date": "2025-06-01",
+        "end_date": "2025-06-01",
+        "type": "Networking",
+        "description": "An evening to connect with local developers, designers, and entrepreneurs.",
+        "id": 1020,
+        "user_id": 888888,
+        "attendees": [
+            164222
+        ]
+    },
+    {
+        "title": "Cultural Food Festival",
+        "address": "789 Taste Ln, Flavor Town",
+        "start_date": "2025-07-20",
+        "end_date": "2025-07-21",
+        "type": "Culture",
+        "description": "Celebrate cuisines from around the world with food, music, and art.",
+        "id": 1030,
+        "user_id": 777777,
+        "attendees": [
+            164222
+        ]
+    },
+    {
+        "title": "Outdoor Movie Night",
+        "address": "321 Sunset Dr, Movieville",
+        "start_date": "2025-08-15",
+        "end_date": "2025-08-15",
+        "type": "Entertainment",
+        "description": "Watch a classic film under the stars with friends and snacks.",
+        "id": 1040,
+        "user_id": 777777,
         "attendees": []
     },
     {
-        "title": "Test event",
-        "address": "A cool address",
-        "start_date": "2025-06-15",
-        "end_date": "2025-07-15",
-        "type": "test",
-        "description": "Here's a test",
-        "id": 3910,
-        "user_id": 571293,
-        "attendees": []
-    },
-    {
-        "title": "Test event",
-        "address": "A cool address",
-        "start_date": "2025-06-15",
-        "end_date": "2025-07-15",
-        "type": "test",
-        "description": "Here's a test",
-        "id": 9898,
-        "user_id": 571293,
-        "attendees": []
-    },
-    {
-        "title": "Test event",
-        "address": "A cool address",
-        "start_date": "2025-06-15",
-        "end_date": "2025-07-15",
-        "type": "test",
-        "description": "Here's a test",
-        "id": 2960,
-        "user_id": 571293,
-        "attendees": []
+        "title": "Local Art Show",
+        "address": "555 Canvas St, Creaton",
+        "start_date": "2025-09-05",
+        "end_date": "2025-09-06",
+        "type": "Culture",
+        "description": "Browse original pieces by local artists and creators.",
+        "id": 1050,
+        "user_id": 999999,
+        "attendees": [
+            164222
+        ]
     }
 ]

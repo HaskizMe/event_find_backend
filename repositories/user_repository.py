@@ -36,3 +36,21 @@ class UserRepository:
             raise Exception("User file not found")
         except Exception as e:
             raise Exception(f"Failed to create user: {str(e)}")
+        
+
+    @staticmethod
+    def get_user_info(user_id: int):
+        try:
+            with open("./db/users.json", "r") as file:
+                data = json.load(file)
+                for user in data["users"]:
+                    if user.get("id") == user_id:
+                        return User(
+                            username=user["username"],
+                            email=user["email"],
+                            password_hash=user["password_hash"],
+                            id=user.get("id")
+                        )
+        except FileNotFoundError:
+            raise Exception("User file not found")
+        return None

@@ -20,6 +20,23 @@ class EventRepository:
             raise Exception("Events file not found")
         
     @staticmethod
+    def get_event_by_id(event_id: int) -> Event | None:
+        try:
+            with open("./db/events.json", "r") as file:
+                data = json.load(file)
+
+            for event in data:
+                if event.get("id") == event_id:
+                    return Event(**event)
+
+            return None  # Event not found
+
+        except FileNotFoundError:
+            raise Exception("Events file not found")
+        except Exception as e:
+            raise e
+        
+    @staticmethod
     def create_event(event: EventRequest, user_id: int) -> Event | None:
         try:
             with open("./db/events.json", "r") as file:

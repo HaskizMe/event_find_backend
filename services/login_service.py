@@ -26,37 +26,33 @@ class LoginService:
         
     # Function to verify login from users.json
     @staticmethod
-    def get_login_token(email: str, password: str) -> str:
+    def get_login_token(email: str, password: str) -> tuple[User, str]:
         try:
             email = email.strip().lower()
-            # Fetch user from database
             user = UserRepository.get_user_by_email(email)
             if not user:
                 raise Exception("User not found")
 
-            # Hash input password using SHA256
             hashed_password = hashlib.sha256(password.encode()).hexdigest()
 
-            # Verify password match
             if user.password_hash != hashed_password:
                 raise Exception("Invalid credentials")
-            
+
             user_payload = {
                 "id": user.id,
                 "username": user.username,
                 "email": user.email
             }
 
-            # Generate JWT token
             expiration_time = datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=1)
             token_payload = {
-                "sub": user.username,  # Subject (user)
-                "exp": expiration_time,  # Expiry time
-                "user": user_payload  # Include role or other user attributes if needed
+                "sub": user.username,
+                "exp": expiration_time,
+                "user": user_payload
             }
             token = jwt.encode(token_payload, SECRET_KEY, algorithm=ALGORITHM)
 
-            return token
+            return user, token  # return both
         except Exception as e:
             raise Exception(f"Login failed: {str(e)}")
         
@@ -82,7 +78,16 @@ class LoginService:
             UserRepository.create_user(new_user)
 
             # Return JWT token just like login
-            return LoginService.get_login_token(email, password)
+            return {"success": True, "message": "User created successfully"}
 
         except Exception as e:
             raise Exception(f"Signup failed: {str(e)}")
+        
+
+    @staticmethod
+    def get_user_info(user_id: int) -> User:
+        try:
+            user = UserRepository.get_user_info(user_id)
+            return user
+        except Exception as e:
+            raise Exception(f"User not found: {str(e)}")

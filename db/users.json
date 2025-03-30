@@ -17,6 +17,30 @@
             "email": "dev7@local.com",
             "username": "haskellb",
             "password_hash": "89e01536ac207279409d4de1e5253e01f4a1769e696db0d6062ca9b8f56767c8"
+        },
+        {
+            "id": 451238,
+            "email": "dev1@local.com",
+            "username": "haskellb",
+            "password_hash": "89e01536ac207279409d4de1e5253e01f4a1769e696db0d6062ca9b8f56767c8"
+        },
+        {
+            "id": 669745,
+            "email": "dev2@local.com",
+            "username": "haskellb",
+            "password_hash": "89e01536ac207279409d4de1e5253e01f4a1769e696db0d6062ca9b8f56767c8"
+        },
+        {
+            "id": 336399,
+            "email": "dev3@local.com",
+            "username": "haskellb",
+            "password_hash": "89e01536ac207279409d4de1e5253e01f4a1769e696db0d6062ca9b8f56767c8"
+        },
+        {
+            "id": 807905,
+            "email": "dev4@local.com",
+            "username": "haskellb",
+            "password_hash": "89e01536ac207279409d4de1e5253e01f4a1769e696db0d6062ca9b8f56767c8"
         }
     ]
 }
