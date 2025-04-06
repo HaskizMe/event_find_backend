@@ -33,13 +33,23 @@ conda activate react-backend
 
 > If your environment has a different name, replace `react-backend` with your actual environment name from `environment.yml`.
 
-### 4. Run the FastAPI server
+### 4. Run the FastAPI server locally
 
 ```bash
 uvicorn main:app --reload
 ```
 
 This will start the backend on `http://localhost:8000`
+
+---
+
+### Helpful commands for running in AWS server
+
+| Description           | Command                              |
+| --------------------- | ------------------------------------ |
+| Start server          | ```sudo systemctl start uvicorn```   |
+| Stop server           | ```sudo systemctl stop uvicorn```    |
+| See status of server  | ```sudo systemctl status uvicorn```  |
 
 ---
 
