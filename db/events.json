@@ -11,7 +11,9 @@
         "description": "An outdoor concert featuring local bands.",
         "id": 1342,
         "user_id": 920574,
-        "attendees": []
+        "attendees": [
+            920574
+        ]
     },
     {
         "title": "Utah Valley Tech Workshop",
@@ -136,6 +138,20 @@
         "type": "Open House",
         "description": "Tour this beautiful new home in the desert!",
         "id": 3245,
+        "user_id": 920574,
+        "attendees": []
+    },
+    {
+        "title": "Test event",
+        "address": "123 Main St",
+        "city": "Logan",
+        "state": "UT",
+        "zip": "84321",
+        "country": "United States",
+        "start_date": "2025-06-15",
+        "type": "Workshop",
+        "description": "Join us for a hands-on workshop on building React apps!",
+        "id": 2766,
         "user_id": 920574,
         "attendees": []
     }

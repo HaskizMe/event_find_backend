@@ -13,7 +13,7 @@ load_dotenv()
 MAPBOX_PUBLIC_KEY = os.getenv("MAPBOX_PUBLIC_KEY")
 WEATHER_API_KEY = os.getenv("WEATHER_API_KEY")
 
-@router.post("/login/", response_model=LoginResponse)
+@router.post("/login", response_model=LoginResponse)
 async def login(login: LoginRequest):
     try:
         user, token = LoginService.get_login_token(login.email, login.password)
@@ -58,7 +58,7 @@ async def get_account(
             username=user.username,
             email=user.email,
             user_id=user.id,
-            jwt_token=token,  # ✅ Include the same token back if you want
+            jwt_token=token,  # Include the same token back if you want
             mapbox_token=MAPBOX_PUBLIC_KEY,
             weather_token=WEATHER_API_KEY
         )
