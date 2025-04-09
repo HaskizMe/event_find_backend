@@ -1,21 +1,5 @@
 [
     {
-        "title": "Springville Music Fest",
-        "address": "110 S Main St",
-        "city": "Springville",
-        "state": "UT",
-        "zip": "84663",
-        "country": "United States",
-        "start_date": "2025-06-10",
-        "type": "Concert",
-        "description": "An outdoor concert featuring local bands.",
-        "id": 1342,
-        "user_id": 920574,
-        "attendees": [
-            920574
-        ]
-    },
-    {
         "title": "Utah Valley Tech Workshop",
         "address": "800 W University Pkwy",
         "city": "Orem",

@@ -50,3 +50,7 @@ async def delete_event(event_id: int, user_id: int = Depends(get_current_user_id
         return {"message": "Event deleted"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    
+
+
+
