@@ -69,3 +69,4 @@ dependencies:
       - uvloop==0.21.0
       - watchfiles==1.0.4
       - websockets==15.0.1
+      - python-jose==3.4.0
