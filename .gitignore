@@ -2,3 +2,5 @@
 __pycache__
 *.pyc
 .env
+docker/data/
+postgres-data/
