@@ -9,8 +9,12 @@ from middleware.auth_middleware import AuthMiddleware
 from middleware.api_gateway_middleware import ApiGatewayAuthMiddleware
 from schemas.message_schema import MessageResponse
 from config import settings
+from containers import Container
 
 app = FastAPI(title="CS3660 Backend Project", version="1.0.0")
+
+container = Container()
+app.container = container
 
 app.add_middleware(AuthMiddleware)
 # # Not needed when CORS is handled through API Gateway
