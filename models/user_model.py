@@ -9,19 +9,18 @@
 
 
 
+# models/user_model.py
+
 from sqlalchemy import Column, Integer, String
-
+from sqlalchemy.orm import relationship
 from models.base_model import Base
-
 
 class User(Base):
     __tablename__ = 'users'
+
     id = Column(Integer, primary_key=True)
     email = Column(String, unique=True, nullable=False)
     username = Column(String, unique=True, nullable=False)
     password_hash = Column(String, nullable=False)
 
-    def __init__(self, username: str, name: str, password_hash: str):
-        self.username = username
-        self.name = name        
-        self.password_hash = password_hash
+    attending_events = relationship("Event", secondary="event_attendees", back_populates="attendees")

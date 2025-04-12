@@ -25,6 +25,7 @@ target_metadata = Base.metadata
 
 # We import this so that alembic will auto generate sql code for my user model
 from models.user_model import User
+from models.event_model import Event
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:

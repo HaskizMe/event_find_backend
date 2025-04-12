@@ -82,6 +82,7 @@ import os
 from dotenv import load_dotenv
 
 from schemas.login_schema import LoginRequest, LoginResponse, VerifyLoginRequest
+from schemas.signup_schema import SignUpRequest, SignUpResponse
 from services.login_service import LoginService
 from utils.auth_utility import get_current_user_id 
 from dependency_injector.wiring import Provide, inject
@@ -125,9 +126,11 @@ async def verify(verify_request: VerifyLoginRequest):
     
 
 @router.get("/me", response_model=LoginResponse)
+@inject
 async def get_account(
     request: Request,
-    user_id: int = Depends(get_current_user_id)
+    user_id: int = Depends(get_current_user_id),
+    login_service: LoginService = Depends(Provide[Container.login_service])
 ):
     try:
         # Get the raw token from the Authorization header
@@ -136,7 +139,7 @@ async def get_account(
         if auth_header and auth_header.startswith("Bearer "):
             token = auth_header.split(" ")[1]
 
-        user = LoginService.get_user_info(user_id)
+        user = login_service.get_user_info(user_id)
 
         return LoginResponse(
             success=True,
@@ -147,40 +150,16 @@ async def get_account(
             mapbox_token=MAPBOX_PUBLIC_KEY,
             weather_token=WEATHER_API_KEY
         )
-    except Exception as e:
-        raise HTTPException(status_code=401, detail=str(e))
-
-@router.post("/login/verify", response_model=LoginResponse)
-async def verify(verify_request: VerifyLoginRequest):
-    try:
-        _ = LoginService.verify_token(verify_request.jwt_token)
-        return LoginResponse(success=True, jwt_token=verify_request.jwt_token)
     except Exception as e:
         raise HTTPException(status_code=401, detail=str(e))
     
-
-@router.get("/me", response_model=LoginResponse)
-async def get_account(
-    request: Request,
-    user_id: int = Depends(get_current_user_id)
+@router.post("/signup", response_model=SignUpResponse)
+@inject
+async def signup(
+    signup: SignUpRequest,
+    login_service: LoginService = Depends(Provide[Container.login_service])
 ):
     try:
-        # Get the raw token from the Authorization header
-        auth_header = request.headers.get("Authorization")
-        token = None
-        if auth_header and auth_header.startswith("Bearer "):
-            token = auth_header.split(" ")[1]
-
-        user = LoginService.get_user_info(user_id)
-
-        return LoginResponse(
-            success=True,
-            username=user.username,
-            email=user.email,
-            user_id=user.id,
-            jwt_token=token,  # Include the same token back if you want
-            mapbox_token=MAPBOX_PUBLIC_KEY,
-            weather_token=WEATHER_API_KEY
-        )
+        return login_service.signup_user(signup.email, signup.password, signup.username)        
     except Exception as e:
         raise HTTPException(status_code=401, detail=str(e))
