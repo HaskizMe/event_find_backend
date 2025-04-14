@@ -19,16 +19,16 @@ app.add_middleware(AuthMiddleware)
 
 # CORS is handled through API Gateway, only need for testing locally
 if settings.app_env == "local":
+    print(settings.allow_origins_list)
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=settings.allow_origins,  # Allow requests from React frontend
+        allow_origins=settings.allow_origins_list,  # Allow requests from React frontend
         allow_credentials=True,
         allow_methods=["*"],  # Allow all HTTP methods (GET, POST, OPTIONS, etc.)
         allow_headers=["*"],  # Allow all headers
     )
 
 if settings.app_env == "prod":
-    print(settings.app_env)
     app.add_middleware(ApiGatewayAuthMiddleware)  # Middleware to check API token
 
 
