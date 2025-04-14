@@ -53,6 +53,15 @@ This will start the backend on `http://localhost:8000`
 
 ---
 
+### Alembic commands
+
+| Description                         | Command                                                               |
+| ----------------------------------- | --------------------------------------------------------------------- |
+| Create tables with message          | ```python -m alembic revision --autogenerate -m "commit message"```   |
+| Push table creation files to DB     | ```python -m alembic upgrade head```                                  |
+
+---
+
 ## 📦 Export dependencies (optional, if you've added new packages)
 
 ```bash

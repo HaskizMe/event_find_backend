@@ -6,26 +6,36 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from controllers import login_controller, swapi_controller, signup_controller, event_controller, api_keys_controller
 from middleware.auth_middleware import AuthMiddleware
+from middleware.api_gateway_middleware import ApiGatewayAuthMiddleware
 from schemas.message_schema import MessageResponse
-
+from config import settings
+from containers import Container
 
 app = FastAPI(title="CS3660 Backend Project", version="1.0.0")
+container = Container()
+app.container = container
 
 app.add_middleware(AuthMiddleware)
-# Not needed when CORS is handled through API Gateway
-app.add_middleware(
-   CORSMiddleware,
-   allow_origins=["http://localhost:5173"],  # Allow requests from React frontend
-   allow_credentials=True,
-   allow_methods=["*"],  # Allow all HTTP methods (GET, POST, OPTIONS, etc.)
-   allow_headers=["*"],  # Allow all headers
-)
+
+# CORS is handled through API Gateway, only need for testing locally
+if settings.app_env == "local":
+    print(settings.allow_origins_list)
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=settings.allow_origins_list,  # Allow requests from React frontend
+        allow_credentials=True,
+        allow_methods=["*"],  # Allow all HTTP methods (GET, POST, OPTIONS, etc.)
+        allow_headers=["*"],  # Allow all headers
+    )
+
+if settings.app_env == "prod":
+    app.add_middleware(ApiGatewayAuthMiddleware)  # Middleware to check API token
 
 
 
 app.include_router(login_controller.router)
 app.include_router(swapi_controller.router)
-app.include_router(signup_controller.router)
+# app.include_router(signup_controller.router)
 app.include_router(event_controller.router)
 app.include_router(api_keys_controller.router)
 

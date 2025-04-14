@@ -1,7 +1,8 @@
 from typing import List, Optional
 from pydantic import BaseModel
+from datetime import date
 
-class Event(BaseModel):
+class EventResponse(BaseModel):
     id: int
     user_id: int
     title: str
@@ -10,16 +11,19 @@ class Event(BaseModel):
     state: str
     zip: str
     country: str
-    start_date: str
+    start_date: date  # This allows auto-parsing from string
     type: str
-    description: str
-    attendees: List[int]
+    description: Optional[str] = None
+    attendees: List[int] = []  # default to empty list
+
+    class Config:
+        from_attributes = True  # <- This is essential for converting from SQLAlchemy model
 
 class EventsResponse(BaseModel):
     # count: int
     # next: Optional[str] = None
     # previous: Optional[str] = None
-    results: List[Event]
+    results: List[EventResponse]
 
 
 # What the frontend sends
